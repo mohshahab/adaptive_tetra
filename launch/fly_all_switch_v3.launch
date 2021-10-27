@@ -1,0 +1,37 @@
+<launch>
+
+
+
+
+
+
+    <!-- FCU url to local simulation-->
+    <!-- <arg name="fcu_url" default="udp://:14540@localhost:14557" /> -->
+
+    <!-- MAVROS-->
+    <!-- <include file="$(find px4)/launch/mavros_posix_sitl.launch"> -->
+        <!-- <arg name="fcu_url" value="$(arg fcu_url)" /> -->
+    <!-- </include> -->
+
+
+<!-- <include file="$(find vrpn_client_ros)/launch/sample.launch" > -->
+<!--		<arg name="server" default="$(arg mocap_server)" /> -->
+<!--	</include> -->
+
+
+
+
+
+	<!-- <node pkg="topic_tools" type="relay" name="mocap_topic_relay" args="/vrpn_client_node/$(arg rbname)/pose /tetra1/mavros/vision_pose/pose" /> -->
+
+	<node pkg="rosbag" type="record" name="rosbag_record_all"
+		args="record -o /home/mohshahab/Desktop/ros_data/newexp.bag /tetra1/mavros/local_position/pose" />
+
+
+
+<node pkg="adaptive_tetra" type="setpoint_multi_switch_node.py" name="setpoint_multi_switch_node" output="screen"> 
+ </node> 
+
+
+
+</launch>
